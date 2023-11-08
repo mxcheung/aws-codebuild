@@ -12,10 +12,10 @@ Here is an example of what the install phase in a buildspec.yml file might look 
 phases:
   install:
     runtime-versions:
-      nodejs: 14
+      python: 3.9
     commands:
-      - npm install
       - pip install -r requirements.txt
+
 ```
 
 
