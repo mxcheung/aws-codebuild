@@ -8,19 +8,6 @@ Installing dependencies: You can use this phase to install any dependencies or p
 
 Here is an example of what the install phase in a buildspec.yml file might look like:
 
-yaml
-Copy code
-phases:
-  install:
-    runtime-versions:
-      nodejs: 14
-    commands:
-      - npm install
-      - pip install -r requirements.txt
-In this example, the install phase specifies that it needs Node.js version 14 and then proceeds to install Node.js and Python dependencies using npm and pip, respectively.
-
-The install phase allows you to set up the required runtime environment and dependencies so that your project can be built successfully in the subsequent phases (e.g., build phase). It's a crucial part of defining how your build process should be executed in AWS CodeBuild.
-
 ```
 phases:
   install:
