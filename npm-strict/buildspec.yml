@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+  pre_build:
+    commands:
+      # Download the certificate from S3
+      - aws s3 cp s3://your-bucket-name/path/to/certificate.crt /tmp/self-signed-cert.crt
+      # Configure npm to trust the certificate
+      - npm config set cafile /tmp/self-signed-cert.crt
+  build:
+    commands:
+      # Optionally, test the connection to your S3 bucket
+      - npm test s3
