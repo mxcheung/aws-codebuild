@@ -18,7 +18,7 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 # step 1 - quickstart
 
 ```
-git clone https://github.com/mxcheung/fortune-cookies.git
+git clone https://github.com/mxcheung/aws-codebuild.git
 cd /home/ec2-user/environment/fortune-cookies/pipeline-cdk
 . ./install.sh
 
