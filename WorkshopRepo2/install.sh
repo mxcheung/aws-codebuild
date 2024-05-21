@@ -2,10 +2,15 @@
 # Creates pipeline via cdk
 
 echo "Welcome fortunes cdk workshop pipeline"
+mkdir /home/ec2-user/environment/WorkshopRepo
+cd /home/ec2-user/environment/WorkshopRepo
+cp -R ../aws-codebuild/WorkshopRepo2/bin/ .
+cp -R ../aws-codebuild/WorkshopRepo2/lambda/ .
+cp -R ../aws-codebuild/WorkshopRepo2/lib/ .
+cp -R ../aws-codebuild/WorkshopRepo2/test/ .
+cp  ../aws-codebuild/WorkshopRepo2/* .
 
-cd /home/ec2-user/environment/aws-codebuild/cdk-workshop
-
-
+cd /home/ec2-user/environment/WorkshopRepo
 
 cdk init app --language typescript
 
