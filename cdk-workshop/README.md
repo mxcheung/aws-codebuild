@@ -24,5 +24,9 @@ cd /home/ec2-user/environment/aws-codebuild/cdk-workshop
 
 ```
 
-
+# step 2 - test
+```
+cloud_user:~/environment/aws-codebuild/cdk-workshop (main) $ curl  https://06zja4ccod.execute-api.us-east-1.amazonaws.com/prod/
+Hello, CDK! You've hit /
+```
 https://cdkworkshop.com/20-typescript/70-advanced-topics/200-pipelines/2000-create-repo.html
