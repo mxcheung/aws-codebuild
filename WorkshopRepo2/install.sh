@@ -9,6 +9,7 @@ cp -R ../aws-codebuild/WorkshopRepo2/lambda/ .
 cp -R ../aws-codebuild/WorkshopRepo2/lib/ .
 cp -R ../aws-codebuild/WorkshopRepo2/test/ .
 cp  ../aws-codebuild/WorkshopRepo2/* .
+cp  ../aws-codebuild/WorkshopRepo2/.gitignore .
 
 cd /home/ec2-user/environment/WorkshopRepo
 
