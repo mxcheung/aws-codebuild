@@ -28,3 +28,11 @@ cdk synth
 
 cdk deploy
 
+cd /home/ec2-user/environment/WorkshopRepo
+git init && git add -A && git commit -m "init"
+git remote add origin https://git-codecommit.us-east-1.amazonaws.com/v1/repos/WorkshopRepo
+git push origin master
+git checkout -b main
+git push origin main
+
+
