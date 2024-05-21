@@ -13,3 +13,20 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `cdk deploy`      deploy this stack to your default AWS account/region
 * `cdk diff`        compare deployed stack with current state
 * `cdk synth`       emits the synthesized CloudFormation template
+
+
+# step 1 - quickstart
+
+```
+git clone https://github.com/mxcheung/aws-codebuild.git
+cd /home/ec2-user/environment/aws-codebuild/cdk-workshop
+. ./install.sh
+
+```
+
+# step 2 - test
+```
+cloud_user:~/environment/aws-codebuild/cdk-workshop (main) $ curl  https://06zja4ccod.execute-api.us-east-1.amazonaws.com/prod/
+Hello, CDK! You've hit /
+```
+https://cdkworkshop.com/20-typescript/70-advanced-topics/200-pipelines/2000-create-repo.html
