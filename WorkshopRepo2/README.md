@@ -22,6 +22,20 @@ git clone https://github.com/mxcheung/aws-codebuild.git
 cd /home/ec2-user/environment/aws-codebuild/WorkshopRepo2
 . ./install.sh
 ```
+# step 2 - quickstart
 
+```
+cd /home/ec2-user/environment/WorkshopRepo
+git init && git add -A && git commit -m "init"
+git remote add origin https://git-codecommit.us-east-1.amazonaws.com/v1/repos/WorkshopRepo
+git push origin master
+git checkout -b main
+git push origin main
+```
+
+# step 3 - quickstart
+```
+curl https://v814mqn8r9.execute-api.us-east-1.amazonaws.com/prod/
+```
 
 https://cdkworkshop.com/20-typescript/70-advanced-topics/200-pipelines/2000-create-repo.html
