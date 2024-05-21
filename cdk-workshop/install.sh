@@ -1,9 +1,11 @@
 #!/bin/bash
 # Creates pipeline via cdk
 
-echo "Welcome fortunes pipeline"
+echo "Welcome fortunes cdk workshop pipeline"
 
-cd /home/ec2-user/environment/fortune-cookies/pipeline-cdk
+cd /home/ec2-user/environment/aws-codebuild/cdk-workshop
+
+
 
 cdk init app --language typescript
 
