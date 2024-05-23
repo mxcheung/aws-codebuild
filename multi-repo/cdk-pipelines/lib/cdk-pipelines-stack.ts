@@ -4,7 +4,7 @@ import * as codepipeline from 'aws-cdk-lib/aws-codepipeline';
 import * as codepipeline_actions from 'aws-cdk-lib/aws-codepipeline-actions';
 import * as codebuild from 'aws-cdk-lib/aws-codebuild';
 import * as s3 from 'aws-cdk-lib/aws-s3';
-import * as iam from 'aws-cdk-lib/aws-iam';
+import * as codecommit from 'aws-cdk-lib/aws-codecommit';
 
 export class CdkPipelinesStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -20,17 +20,17 @@ export class CdkPipelinesStack extends cdk.Stack {
 
     // Define a function to create a pipeline for a given repository
     const createPipeline = (repoName: string, repoBranch: string) => {
+      const repository = codecommit.Repository.fromRepositoryName(this, `${repoName}-Repo`, repoName);
+
       const pipeline = new codepipeline.Pipeline(this, `${repoName}-Pipeline`, {
         pipelineName: `${repoName}-Pipeline`,
         artifactBucket: bucket,
       });
 
-      const sourceAction = new codepipeline_actions.GitHubSourceAction({
-        actionName: 'GitHub_Source',
-        owner: 'your-github-username',
-        repo: repoName,
+      const sourceAction = new codepipeline_actions.CodeCommitSourceAction({
+        actionName: 'CodeCommit_Source',
+        repository: repository,
         branch: repoBranch,
-        oauthToken: cdk.SecretValue.secretsManager('GITHUB_TOKEN'),
         output: sourceArtifact,
       });
 
