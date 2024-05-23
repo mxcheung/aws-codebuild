@@ -1,17 +1,8 @@
 #!/bin/bash
 # Creates pipeline via cdk
 
-echo "Welcome fortunes cdk workshop pipeline"
-mkdir /home/ec2-user/environment/WorkshopRepo
-cd /home/ec2-user/environment/WorkshopRepo
-cp -R ../aws-codebuild/WorkshopRepo2/bin/ .
-cp -R ../aws-codebuild/WorkshopRepo2/lambda/ .
-cp -R ../aws-codebuild/WorkshopRepo2/lib/ .
-cp -R ../aws-codebuild/WorkshopRepo2/test/ .
-cp  ../aws-codebuild/WorkshopRepo2/* .
-cp  ../aws-codebuild/WorkshopRepo2/.gitignore .
-
-cd /home/ec2-user/environment/WorkshopRepo
+echo "Welcome fortunes cdk workshop multi repo pipeline"
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/cdk-repos
 
 cdk init app --language typescript
 
@@ -28,10 +19,5 @@ cdk synth
 
 cdk deploy
 
-cd /home/ec2-user/environment/WorkshopRepo
-git init && git add -A && git commit -m "init"
-git remote add origin https://git-codecommit.us-east-1.amazonaws.com/v1/repos/WorkshopRepo
-git push origin master
-git checkout -b main
-git push origin main
+
 
