@@ -1,65 +1,83 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
-import * as codepipeline from '@aws-cdk/aws-codepipeline';
-import * as codepipeline_actions from '@aws-cdk/aws-codepipeline-actions';
-import * as codecommit from '@aws-cdk/aws-codecommit';
-import * as codebuild from '@aws-cdk/aws-codebuild';
+import * as codepipeline from 'aws-cdk-lib/aws-codepipeline';
+import * as codepipeline_actions from 'aws-cdk-lib/aws-codepipeline-actions';
+import * as codebuild from 'aws-cdk-lib/aws-codebuild';
+import * as s3 from 'aws-cdk-lib/aws-s3';
+import * as iam from 'aws-cdk-lib/aws-iam';
 
 export class CdkPipelinesStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
+    const sourceArtifact = new codepipeline.Artifact();
+    const buildArtifact = new codepipeline.Artifact();
 
-    // example resource
-    // const queue = new sqs.Queue(this, 'CdkPipelinesQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
-    const repositories = [
-      'repo1',
-      'repo2',
-      'repo3' // Add your repository names here
-    ];
-
-    repositories.forEach(repoName => {
-      const repository = codecommit.Repository.fromRepositoryName(this, `${repoName}-repo`, repoName);
-
-      const sourceOutput = new codepipeline.Artifact();
-      
-      const pipeline = new codepipeline.Pipeline(this, `${repoName}-pipeline`, {
-        pipelineName: `${repoName}-pipeline`,
-        stages: [
-          {
-            stageName: 'Source',
-            actions: [
-              new codepipeline_actions.CodeCommitSourceAction({
-                actionName: 'CodeCommit',
-                repository: repository,
-                output: sourceOutput,
-                branch: 'main', // Specify the branch
-              }),
-            ],
-          },
-          {
-            stageName: 'Build',
-            actions: [
-              new codepipeline_actions.CodeBuildAction({
-                actionName: 'Build',
-                project: new codebuild.PipelineProject(this, `${repoName}-build`, {
-                  projectName: `${repoName}-build`,
-                  environment: {
-                    buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
-                  },
-                }),
-                input: sourceOutput,
-                outputs: [new codepipeline.Artifact()],
-              }),
-            ],
-          },
-        ],
-      });
+    // Create S3 bucket for storing build artifacts
+    const bucket = new s3.Bucket(this, 'PipelineBucket', {
+      versioned: true,
     });
 
+    // Define a function to create a pipeline for a given repository
+    const createPipeline = (repoName: string, repoBranch: string) => {
+      const pipeline = new codepipeline.Pipeline(this, `${repoName}-Pipeline`, {
+        pipelineName: `${repoName}-Pipeline`,
+        artifactBucket: bucket,
+      });
+
+      const sourceAction = new codepipeline_actions.GitHubSourceAction({
+        actionName: 'GitHub_Source',
+        owner: 'your-github-username',
+        repo: repoName,
+        branch: repoBranch,
+        oauthToken: cdk.SecretValue.secretsManager('GITHUB_TOKEN'),
+        output: sourceArtifact,
+      });
+
+      const buildProject = new codebuild.PipelineProject(this, `${repoName}-BuildProject`, {
+        buildSpec: codebuild.BuildSpec.fromObject({
+          version: '0.2',
+          phases: {
+            install: {
+              commands: ['npm install'],
+            },
+            build: {
+              commands: ['npm run build'],
+            },
+          },
+          artifacts: {
+            'base-directory': 'dist',
+            files: ['**/*'],
+          },
+        }),
+        environment: {
+          buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
+        },
+      });
+
+      const buildAction = new codepipeline_actions.CodeBuildAction({
+        actionName: 'Build',
+        project: buildProject,
+        input: sourceArtifact,
+        outputs: [buildArtifact],
+      });
+
+      pipeline.addStage({
+        stageName: 'Source',
+        actions: [sourceAction],
+      });
+
+      pipeline.addStage({
+        stageName: 'Build',
+        actions: [buildAction],
+      });
+
+      return pipeline;
+    };
+
+    // Create pipelines for repo1, repo2, and repo3
+    createPipeline('repo1', 'main');
+    createPipeline('repo2', 'main');
+    createPipeline('repo3', 'main');
   }
 }
