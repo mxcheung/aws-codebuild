@@ -45,10 +45,6 @@ export class CdkPipelinesStack extends cdk.Stack {
               commands: ['npm run build'],
             },
           },
-          artifacts: {
-            'base-directory': 'dist',
-            files: ['**/*'],
-          },
         }),
         environment: {
           buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
