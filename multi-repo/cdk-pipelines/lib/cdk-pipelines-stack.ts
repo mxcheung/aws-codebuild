@@ -58,6 +58,30 @@ export class CdkPipelinesStack extends cdk.Stack {
         outputs: [buildArtifact],
       });
 
+
+      // Define the deploy project
+      const deployProject = new codebuild.PipelineProject(this, `${repoName}-DeployProject`, {
+        environment: {
+          buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
+        },
+        buildSpec: codebuild.BuildSpec.fromObject({
+          version: '0.2',
+          phases: {
+            pre_build: {
+              commands: [
+                'npm install -g aws-cdk',
+                'npm install',
+              ],
+            },
+            build: {
+              commands: [
+                'npx cdk deploy --require-approval never',
+              ],
+            },
+          },
+        }),
+      });
+      
       pipeline.addStage({
         stageName: 'Source',
         actions: [sourceAction],
