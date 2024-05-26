@@ -81,7 +81,14 @@ export class CdkPipelinesStack extends cdk.Stack {
           },
         }),
       });
-      
+
+      // Define the deploy action
+      const deployAction = new codepipeline_actions.CodeBuildAction({
+        actionName: 'CDKDeploy',
+        project: deployProject,
+        input: buildAction.actionProperties.outputs![0],
+      });
+
       pipeline.addStage({
         stageName: 'Source',
         actions: [sourceAction],
@@ -92,6 +99,11 @@ export class CdkPipelinesStack extends cdk.Stack {
         actions: [buildAction],
       });
 
+      pipeline.addStage({
+        stageName: 'Deploy',
+        actions: [deployAction],
+      });
+      
       return pipeline;
     };
 
