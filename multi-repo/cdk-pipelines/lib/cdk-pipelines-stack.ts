@@ -12,7 +12,7 @@ export class CdkPipelinesStack extends cdk.Stack {
 
     const sourceArtifact = new codepipeline.Artifact();
     const buildArtifact = new codepipeline.Artifact();
-
+    
     // Create S3 bucket for storing build artifacts
     const bucket = new s3.Bucket(this, 'PipelineBucket', {
       versioned: true,
@@ -57,8 +57,7 @@ export class CdkPipelinesStack extends cdk.Stack {
         input: sourceArtifact,
         outputs: [buildArtifact],
       });
-
-
+      
       // Define the deploy project
       const deployProject = new codebuild.PipelineProject(this, `${repoName}-DeployProject`, {
         environment: {
