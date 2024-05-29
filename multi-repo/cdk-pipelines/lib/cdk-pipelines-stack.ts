@@ -107,8 +107,8 @@ export class CdkPipelinesStack extends cdk.Stack {
     };
 
     // Create pipelines for repo1, repo2, and repo3
-    createPipeline('repo1', 'main');
-    createPipeline('repo2', 'main');
-    createPipeline('repo3', 'main');
+    createPipeline('repo1', 'master');
+    createPipeline('repo2', 'master');
+    createPipeline('repo3', 'master');
   }
 }
