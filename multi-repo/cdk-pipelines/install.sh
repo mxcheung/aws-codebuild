@@ -12,6 +12,8 @@ npm install @aws-cdk/aws-codebuild @aws-cdk/aws-codecommit @aws-cdk/aws-codedepl
 
 npm install @aws-cdk/aws-s3
 
+npm install @aws-cdk/aws-kms
+
 
 cdk bootstrap
 
