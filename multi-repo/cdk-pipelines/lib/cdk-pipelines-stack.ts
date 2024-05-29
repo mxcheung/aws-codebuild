@@ -12,6 +12,7 @@ export class CdkPipelinesStack extends cdk.Stack {
 
     const sourceArtifact = new codepipeline.Artifact();
     const buildArtifact = new codepipeline.Artifact();
+    const deployArtifact = new codepipeline.Artifact();
     
     // Create S3 bucket for storing build artifacts
     const bucket = new s3.Bucket(this, 'PipelineBucket', {
@@ -85,7 +86,8 @@ export class CdkPipelinesStack extends cdk.Stack {
       const deployAction = new codepipeline_actions.CodeBuildAction({
         actionName: 'CDKDeploy',
         project: deployProject,
-        input: buildAction.actionProperties.outputs![0],
+        input: sourceArtifact,
+        outputs: [deployArtifact]
       });
 
       pipeline.addStage({
@@ -109,6 +111,7 @@ export class CdkPipelinesStack extends cdk.Stack {
     // Create pipelines for repo1, repo2, and repo3
     createPipeline('repo1', 'master');
     createPipeline('repo2', 'master');
-    createPipeline('repo3', 'master');
+    createPipeline('repo3', 'master');    
+    
   }
 }
