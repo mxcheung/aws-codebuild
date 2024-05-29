@@ -19,5 +19,13 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 git clone https://github.com/mxcheung/aws-codebuild.git
 cd /home/ec2-user/environment/aws-codebuild/multi-repo/cdk-repos
 . ./install.sh
+```
 
+# step 2 - clone repos
 
+```
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/
+git clone codecommit::us-east-1://repo1
+git clone codecommit::us-east-1://repo2
+git clone codecommit::us-east-1://repo3
+```
