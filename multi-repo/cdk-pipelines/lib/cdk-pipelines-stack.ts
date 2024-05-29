@@ -75,8 +75,13 @@ export class CdkPipelinesStack extends cdk.Stack {
             },
             build: {
               commands: [
+                'npm run build',
+                'npx cdk bootstrap',
+                'npx cdk synth',
                 'npx cdk deploy --require-approval never',
               ],
+              
+             
             },
           },
         }),
