@@ -37,4 +37,8 @@ cp -Rf /home/ec2-user/environment/aws-codebuild/WorkshopRepo2/lambda  /home/ec2-
 cp -Rf /home/ec2-user/environment/aws-codebuild/WorkshopRepo2/lib  /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
 cp -Rf /home/ec2-user/environment/aws-codebuild/WorkshopRepo2/test  /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
 cp -Rf /home/ec2-user/environment/aws-codebuild/WorkshopRepo2/*  /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
+git add .
+git commit -m "initial commit"
+git push origin master
 ```
