@@ -49,10 +49,32 @@ export class CdkPipelinesStack extends cdk.Stack {
         assumedBy: new iam.ServicePrincipal('codebuild.amazonaws.com'),
       });
   
+      // Add necessary permissions for CDK deploy
       codeBuildRole.addToPolicy(new iam.PolicyStatement({
-        actions: ['cloudformation:*'],
+        actions: [
+          'cloudformation:*',
+          's3:*',
+          'sts:AssumeRole',
+          'iam:PassRole',
+          'iam:GetRole',
+          'iam:CreateRole',
+          'iam:DeleteRole',
+          'iam:AttachRolePolicy',
+          'iam:DetachRolePolicy',
+          'iam:PutRolePolicy',
+          'iam:DeleteRolePolicy',
+          'iam:TagRole',
+          'lambda:*',
+          'ssm:GetParameter',
+          'ssm:GetParameters',
+          'ssm:GetParametersByPath',
+          'ssm:PutParameter',
+          'ecr:*',
+          'codebuild:*'
+          ],
         resources: ['*'],
       }));
+      
       
       const buildProject = new codebuild.PipelineProject(this, `${repoName}-BuildProject`, {
         buildSpec: codebuild.BuildSpec.fromObject({
