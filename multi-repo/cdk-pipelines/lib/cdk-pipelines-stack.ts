@@ -28,6 +28,7 @@ export class CdkPipelinesStack extends cdk.Stack {
       versioned: true
     });
     
+    
     // Define a function to create a pipeline for a given repository
     const createPipeline = (repoName: string, repoBranch: string) => {
       const repository = codecommit.Repository.fromRepositoryName(this, `${repoName}-Repo`, repoName);
@@ -44,6 +45,15 @@ export class CdkPipelinesStack extends cdk.Stack {
         output: sourceArtifact,
       });
 
+      const codeBuildRole = new iam.Role(this, `${repoName}-CodeBuildRole`, {
+        assumedBy: new iam.ServicePrincipal('codebuild.amazonaws.com'),
+      });
+  
+      codeBuildRole.addToPolicy(new iam.PolicyStatement({
+        actions: ['cloudformation:*'],
+        resources: ['*'],
+      }));
+      
       const buildProject = new codebuild.PipelineProject(this, `${repoName}-BuildProject`, {
         buildSpec: codebuild.BuildSpec.fromObject({
           version: '0.2',
@@ -53,13 +63,14 @@ export class CdkPipelinesStack extends cdk.Stack {
             },
             build: {
               commands: [
-                         'aws sts get-caller-identity', 
-                         'npm run build', 
-                         'npx cdk synth'
-                        ],
+                'aws sts get-caller-identity',
+                'npm run build', 
+                'npx cdk synth'
+                ],
             },
           },
         }),
+        role: codeBuildRole,
         environment: {
           buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
         },
@@ -74,6 +85,7 @@ export class CdkPipelinesStack extends cdk.Stack {
       
       // Define the deploy project
       const deployProject = new codebuild.PipelineProject(this, `${repoName}-DeployProject`, {
+        role: codeBuildRole,
         environment: {
           buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
         },
