@@ -19,5 +19,23 @@ cdk synth
 
 cdk deploy
 
+echo "git clone repos"
+
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/
+git clone codecommit::us-east-1://repo1
+git clone codecommit::us-east-1://repo2
+git clone codecommit::us-east-1://repo3
+
+echo "git commit code to repos"
+
+cp -Rf /home/ec2-user/environment/aws-codebuild/WorkshopRepo2/bin  /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
+cp -Rf /home/ec2-user/environment/aws-codebuild/WorkshopRepo2/lambda  /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
+cp -Rf /home/ec2-user/environment/aws-codebuild/WorkshopRepo2/lib  /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
+cp -Rf /home/ec2-user/environment/aws-codebuild/WorkshopRepo2/test  /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
+cp -Rf /home/ec2-user/environment/aws-codebuild/WorkshopRepo2/*  /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
+git add .
+git commit -m "initial commit"
+git push origin master
 
 
