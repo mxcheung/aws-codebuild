@@ -7,6 +7,9 @@ Creating a basic CI/CD pipeline for a list of repositories in AWS CodeCommit usi
 - create repos via codecommit
 - cdk pipeline to create code pipelines per repo
 
+
+Building The Project
+================
   
 # step 1 - quickstart
 
