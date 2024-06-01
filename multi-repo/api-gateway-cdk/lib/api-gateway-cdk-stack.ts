@@ -34,10 +34,55 @@ export class ApiGatewayCdkStack extends cdk.Stack {
       requestTemplates: { 'application/json': '{"statusCode": 200}' },
     });
 
+    // Enable CORS on the /fortunes resource
+    const fortunesResource = api.root.addResource('fortunes');
+    
+    // Add GET method with CORS enabled
+    fortunesResource.addMethod('GET', getFortuneIntegration, {
+      methodResponses: [
+        {
+          statusCode: '200',
+          responseParameters: {
+            'method.response.header.Access-Control-Allow-Origin': true,
+            'method.response.header.Access-Control-Allow-Headers': true,
+            'method.response.header.Access-Control-Allow-Methods': true,
+          },
+        },
+      ],
+    });
+
+    // Add an OPTIONS method to handle CORS preflight requests
+    fortunesResource.addMethod('OPTIONS', new apigateway.MockIntegration({
+      integrationResponses: [
+        {
+          statusCode: '200',
+          responseParameters: {
+            'method.response.header.Access-Control-Allow-Origin': "'*'",
+            'method.response.header.Access-Control-Allow-Headers': "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+            'method.response.header.Access-Control-Allow-Methods': "'OPTIONS,GET'",
+          },
+        },
+      ],
+      passthroughBehavior: apigateway.PassthroughBehavior.NEVER,
+      requestTemplates: {
+        'application/json': '{"statusCode": 200}'
+      },
+    }), {
+      methodResponses: [
+        {
+          statusCode: '200',
+          responseParameters: {
+            'method.response.header.Access-Control-Allow-Origin': true,
+            'method.response.header.Access-Control-Allow-Headers': true,
+            'method.response.header.Access-Control-Allow-Methods': true,
+          },
+        },
+      ],
+    });
+
     // Create the /fortunes endpoint
     api.root.addResource('fortunes').addMethod('GET', getFortuneIntegration);
-    
-    
+       
     
   }
 }
