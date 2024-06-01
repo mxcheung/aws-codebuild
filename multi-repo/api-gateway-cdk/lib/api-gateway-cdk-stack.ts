@@ -36,9 +36,11 @@ export class ApiGatewayCdkStack extends cdk.Stack {
 
     // Enable CORS on the /fortunes resource
     const fortunesResource = api.root.addResource('fortunes');
-    
+
+    // Add GET method without authorization
     // Add GET method with CORS enabled
     fortunesResource.addMethod('GET', getFortuneIntegration, {
+      authorizationType: apigateway.AuthorizationType.NONE,
       methodResponses: [
         {
           statusCode: '200',
