@@ -18,6 +18,7 @@ export class CdkLambdaCdkStack extends cdk.Stack {
       runtime: lambda.Runtime.PYTHON_3_9,
       handler: 'cookies.lambda_handler', // Assuming the Python file is named "main.py" and the function is named "lambda_handler"
       code: lambda.Code.fromAsset(path.join(__dirname, '/../lambda')),
+      functionName: 'fortunes',
       timeout: Duration.minutes(3),
       environment: {
         DYNAMODB_TABLE: 'fortunes'
@@ -25,7 +26,7 @@ export class CdkLambdaCdkStack extends cdk.Stack {
     });
     
     
-        // Grant the Lambda function read/write permissions to the DynamoDB table
+    // Grant the Lambda function read/write permissions to the DynamoDB table
     table.grantReadWriteData(lambdaFunction);
     
     
