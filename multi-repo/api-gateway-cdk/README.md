@@ -14,11 +14,11 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `npx cdk synth`   emits the synthesized CloudFormation template
 
 ```
-fortune-api/
+api-gateway-cdk/
 ├── bin/
-│   └── fortune-api.ts
+│   └── api-gateway-cdk.ts
 ├── lib/
-│   └── fortune-api-stack.ts
+│   └── api-gateway-cdk-stack.ts
 ├── cdk.json
 ├── package.json
 └── tsconfig.json
