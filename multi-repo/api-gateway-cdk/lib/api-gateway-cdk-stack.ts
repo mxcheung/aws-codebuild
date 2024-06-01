@@ -50,6 +50,7 @@ export class ApiGatewayCdkStack extends cdk.Stack {
         },
       ],
     });
+  
 
     // Add an OPTIONS method to handle CORS preflight requests
     fortunesResource.addMethod('OPTIONS', new apigateway.MockIntegration({
@@ -79,10 +80,7 @@ export class ApiGatewayCdkStack extends cdk.Stack {
         },
       ],
     });
-
-    // Create the /fortunes endpoint
-    // api.root.addResource('fortunes').addMethod('GET', getFortuneIntegration);
-       
+    
     
   }
 }
