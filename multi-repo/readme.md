@@ -21,3 +21,12 @@ cd /home/ec2-user/environment/aws-codebuild/multi-repo/cdk-pipelines
 . ./install.sh
 
 ```
+
+# step 2 - load data
+
+```
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/repo2
+aws dynamodb batch-write-item --request-items file://items.json
+
+```
+
