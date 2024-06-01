@@ -50,3 +50,14 @@ git add .
 git commit -m "initial commit"
 git push origin master
 
+echo "git commit api-gateway-cdk to repo3"
+cp -Rf /home/ec2-user/environment/aws-codebuild/api-gateway-cdk/bin  /home/ec2-user/environment/aws-codebuild/multi-repo/repo3
+cp -Rf /home/ec2-user/environment/aws-codebuild/api-gateway-cdk/lambda  /home/ec2-user/environment/aws-codebuild/multi-repo/repo3
+cp -Rf /home/ec2-user/environment/aws-codebuild/api-gateway-cdk/lib  /home/ec2-user/environment/aws-codebuild/multi-repo/repo3
+cp -Rf /home/ec2-user/environment/aws-codebuild/api-gateway-cdk/test  /home/ec2-user/environment/aws-codebuild/multi-repo/repo3
+cp -Rf /home/ec2-user/environment/aws-codebuild/api-gateway-cdk/*  /home/ec2-user/environment/aws-codebuild/multi-repo/repo3
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/repo3
+git add .
+git commit -m "initial commit"
+git push origin master
+
