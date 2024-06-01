@@ -81,7 +81,7 @@ export class ApiGatewayCdkStack extends cdk.Stack {
     });
 
     // Create the /fortunes endpoint
-    api.root.addResource('fortunes').addMethod('GET', getFortuneIntegration);
+    // api.root.addResource('fortunes').addMethod('GET', getFortuneIntegration);
        
     
   }
