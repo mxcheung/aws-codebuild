@@ -19,6 +19,5 @@ cdk bootstrap
 
 cdk synth
 
-cdk deploy
-
+cdk deploy  --require-approval never
 
