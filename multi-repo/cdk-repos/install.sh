@@ -28,14 +28,25 @@ git clone codecommit::us-east-1://repo3
 
 echo "git commit code to repos"
 
-cp -Rf /home/ec2-user/environment/aws-codebuild/WorkshopRepo2/bin  /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
-cp -Rf /home/ec2-user/environment/aws-codebuild/WorkshopRepo2/lambda  /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
-cp -Rf /home/ec2-user/environment/aws-codebuild/WorkshopRepo2/lib  /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
-cp -Rf /home/ec2-user/environment/aws-codebuild/WorkshopRepo2/test  /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
-cp -Rf /home/ec2-user/environment/aws-codebuild/WorkshopRepo2/*  /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
+echo "git commit dynamodb-cdk to repo1"
+cp -Rf /home/ec2-user/environment/aws-codebuild/multi-repo/dynamodb-cdk/bin  /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
+cp -Rf /home/ec2-user/environment/aws-codebuild/multi-repo/dynamodb-cdk/lambda  /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
+cp -Rf /home/ec2-user/environment/aws-codebuild/multi-repo/dynamodb-cdk/lib  /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
+cp -Rf /home/ec2-user/environment/aws-codebuild/multi-repo/dynamodb-cdk/test  /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
+cp -Rf /home/ec2-user/environment/aws-codebuild/multi-repo/dynamodb-cdk/*  /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
 cd /home/ec2-user/environment/aws-codebuild/multi-repo/repo1
 git add .
 git commit -m "initial commit"
 git push origin master
 
+echo "git commit lambda-cdk to repo2"
+cp -Rf /home/ec2-user/environment/aws-codebuild/lambda-cdk/bin  /home/ec2-user/environment/aws-codebuild/multi-repo/repo2
+cp -Rf /home/ec2-user/environment/aws-codebuild/lambda-cdk/lambda  /home/ec2-user/environment/aws-codebuild/multi-repo/repo2
+cp -Rf /home/ec2-user/environment/aws-codebuild/lambda-cdk/lib  /home/ec2-user/environment/aws-codebuild/multi-repo/repo2
+cp -Rf /home/ec2-user/environment/aws-codebuild/lambda-cdk/test  /home/ec2-user/environment/aws-codebuild/multi-repo/repo2
+cp -Rf /home/ec2-user/environment/aws-codebuild/lambda-cdk/*  /home/ec2-user/environment/aws-codebuild/multi-repo/repo2
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/repo2
+git add .
+git commit -m "initial commit"
+git push origin master
 
