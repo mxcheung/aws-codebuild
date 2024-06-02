@@ -53,4 +53,9 @@ cd /home/ec2-user/environment/aws-codebuild/multi-repo/cdk-pipelines
 cdk destroy
 cd /home/ec2-user/environment/aws-codebuild/multi-repo/cdk-repos
 cdk destroy
+
+aws cloudformation delete-stack   --stack-name ApiGatewayCdkStack
+aws cloudformation delete-stack   --stack-name CdkLambdaCdkStack
+aws cloudformation delete-stack   --stack-name DynamodbCdkStack
+
 ```
