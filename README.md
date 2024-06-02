@@ -46,3 +46,11 @@ https://mxcheung.github.io/
 
 Source code for Static html is here https://github.com/mxcheung/mxcheung.github.io
 
+
+# step 4 - clean up
+```
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/cdk-pipelines
+cdk destroy
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/cdk-repos
+cdk destroy
+```
