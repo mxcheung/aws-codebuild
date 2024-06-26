@@ -1,0 +1,5 @@
+[Container] 2024/06/26 05:38:15.256216 Running command if grep 'There were no differences' cdk.diff > /dev/null; then echo 'No changed detected, skipping.' fi; else echo 'Changes detected!'
+/codebuild/output/tmp/script.sh: 8: Syntax error: end of file unexpected (expecting "fi")
+[Container] 2024/06/26 05:38:15.261541 Command did not exit successfully if grep 'There were no differences' cdk.diff > /dev/null; then echo 'No changed detected, skipping.' fi; else echo 'Changes detected!' exit status 2
+[Container] 2024/06/26 05:38:15.265732 Phase complete: BUILD State: FAILED
+[Container] 2024/06/26 05:38:15.265750 Phase context status code: COMMAND_EXECUTION_ERROR Message: Error while executing command: if grep 'There were no differences' cdk.diff > /dev/null; then echo 'No changed detected, skipping.' fi; else echo 'Changes detected!'. Reason: exit status 2
