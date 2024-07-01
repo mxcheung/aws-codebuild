@@ -26,10 +26,6 @@ numpy==1.23.5
     #   seaborn
 packaging==21.3
     # via matplotlib
-pandas==1.5.1
-    # via
-    #   -r requirements.in
-    #   seaborn
 pillow==9.3.0
     # via matplotlib
 pyparsing==3.0.9
