@@ -83,6 +83,9 @@ export class CdkPipelinesStack extends cdk.Stack {
             install: {
               commands: ['npm install'],
             },
+            pre_build: {
+              commands: ['echo Pre-build step'],
+            },            
             build: {
               commands: [
                 'aws sts get-caller-identity',
