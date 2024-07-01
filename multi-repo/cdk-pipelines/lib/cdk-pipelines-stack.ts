@@ -124,6 +124,8 @@ export class CdkPipelinesStack extends cdk.Stack {
               commands: [
                 'npm install -g aws-cdk',
                 'npm install',
+                'echo Pre-build step',
+                'sh pre_build.sh'
               ],
             },
             build: {
@@ -133,8 +135,6 @@ export class CdkPipelinesStack extends cdk.Stack {
                 'npx cdk synth',
                 'npx cdk deploy --require-approval never',
               ],
-              
-             
             },
           },
         }),
