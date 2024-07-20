@@ -32,7 +32,6 @@ export class CdkLambdaCdkStack extends cdk.Stack {
       functionName: 'fortunes',
       timeout: Duration.minutes(3),
       tracing: lambda.Tracing.ACTIVE,
-      role: lambdaRole,
       environment: {
         DYNAMODB_TABLE: 'fortunes'
       }
