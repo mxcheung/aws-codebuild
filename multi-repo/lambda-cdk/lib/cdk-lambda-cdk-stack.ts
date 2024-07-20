@@ -14,6 +14,7 @@ export class CdkLambdaCdkStack extends cdk.Stack {
     // Reference to the existing DynamoDB table
     const table = dynamodb.Table.fromTableName(this, 'FortunesTable', 'fortunes');
 
+/*
     const lambdaRole = new iam.Role(this, 'LambdaRole', {
       assumedBy: new iam.ServicePrincipal('lambda.amazonaws.com'),
       managedPolicies: [
@@ -21,6 +22,7 @@ export class CdkLambdaCdkStack extends cdk.Stack {
         iam.ManagedPolicy.fromAwsManagedPolicyName('AWSXRayDaemonWriteAccess'),
       ],
     });
+*/
     
     // Create lambda function
     const lambdaFunction = new lambda.Function(this, 'YourLambdaFunction', {
