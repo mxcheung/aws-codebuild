@@ -1,25 +1,39 @@
+import logging
+import boto3
+import botocore
+import random
+import json
+
 from aws_xray_sdk.core import patch_all, xray_recorder
 from aws_xray_sdk.core import lambda_launcher
 
 
+# Initialize X-Ray recorder
+xray_recorder.configure(service='LambdaCookies')
+
 # Patch all supported libraries (boto3, requests, etc.)
 patch_all()
 
-# Initialize X-Ray recorder
-xray_recorder.configure(service='LambdaCookies')
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+
+@xray_recorder.capture('get_fortune_id')
+def get_fortune_id():
+     fortid = (random.randint(1,16))
+     return fortid
+
+
+@xray_recorder.capture("cookieshandler")
 def lambda_handler(event, context):
-    # Start a segment for the entire Lambda execution
-    xray_recorder.begin_segment('LambdaCookies')    
     print("In lambda handler")
-    import boto3
-    import botocore
-    import random
-    import json
     from boto3.dynamodb.conditions import Key, Attr
     from botocore.vendored import requests
-
-    fortid = (random.randint(1,16))
+    logger.info('got event{}'.format(event))
+    print("get_fortune_id")
+    fortid = get_fortune_id()
     dynamodb = boto3.resource("dynamodb")
+    xray_recorder.begin_subsegment("get_fortune")
     table = dynamodb.Table('fortunes')
 
     response = table.get_item(
@@ -29,6 +43,7 @@ def lambda_handler(event, context):
         ProjectionExpression='fortune'
         
     )
+    xray_recorder.end_subsegment()
     
     json_string = json.dumps(response)
     resp_dict=json.loads(json_string)
@@ -42,6 +57,5 @@ def lambda_handler(event, context):
         },
         "body": json.dumps(fort_dict['fortune'])
     }
-    xray_recorder.end_segment()
     return resp
     
