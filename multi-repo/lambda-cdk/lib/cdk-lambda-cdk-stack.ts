@@ -13,6 +13,14 @@ export class CdkLambdaCdkStack extends cdk.Stack {
     // Reference to the existing DynamoDB table
     const table = dynamodb.Table.fromTableName(this, 'FortunesTable', 'fortunes');
 
+    const lambdaRole = new iam.Role(this, 'LambdaRole', {
+      assumedBy: new iam.ServicePrincipal('lambda.amazonaws.com'),
+      managedPolicies: [
+        iam.ManagedPolicy.fromAwsManagedPolicyName('service-role/AWSLambdaBasicExecutionRole'),
+        iam.ManagedPolicy.fromAwsManagedPolicyName('AWSXRayDaemonWriteAccess'),
+      ],
+    });
+    
     // Create lambda function
     const lambdaFunction = new lambda.Function(this, 'YourLambdaFunction', {
       runtime: lambda.Runtime.PYTHON_3_9,
@@ -20,9 +28,12 @@ export class CdkLambdaCdkStack extends cdk.Stack {
       code: lambda.Code.fromAsset(path.join(__dirname, '/../lambda')),
       functionName: 'fortunes',
       timeout: Duration.minutes(3),
+      tracing: lambda.Tracing.ACTIVE,
+      role: lambdaRole,
       environment: {
         DYNAMODB_TABLE: 'fortunes'
       }
+      
     });
     
     
