@@ -26,7 +26,7 @@ cd /home/ec2-user/environment/aws-codebuild/multi-repo/cdk-pipelines
 
 ```
 cd /home/ec2-user/environment/aws-codebuild/multi-repo/cdk-pipelines
-. ./retry_deploy_stage.sh repo3-Pipeline  Deploy
+. ./retry_stage.sh repo3-Pipeline  Deploy
 cd /home/ec2-user/environment/aws-codebuild/multi-repo/repo2
 aws dynamodb batch-write-item --request-items file://items.json
 
