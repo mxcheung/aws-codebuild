@@ -93,7 +93,7 @@ export class CdkPipelinesStack extends cdk.Stack {
               commands: [
                 'aws sts get-caller-identity',
                 'npm run build', 
-                'npm cdk synth', 
+                'npx cdk synth', 
                 'npx cdk diff'
                 ],
             },
