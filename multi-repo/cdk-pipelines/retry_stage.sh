@@ -18,10 +18,9 @@ retry_stage() {
 
     echo "Last pipeline execution ID for $pipeline_name: $pipeline_execution_id"
 
-    # List failed actions in the specified stage
+   # List failed actions in the specified stage
     failed_actions=$(aws codepipeline list-action-executions --pipeline-name "$pipeline_name" \
-                    --pipeline-execution-id "$pipeline_execution_id" \
-                    --query "actionExecutionDetails[?stageName == '$stage_name' && status == 'Failed']")
+                    --query "actionExecutionDetails[?pipelineExecutionId == '$pipeline_execution_id' && stageName == '$stage_name' && status == 'Failed']")
 
     if [[ -z $failed_actions ]]; then
         echo "No failed actions found in stage $stage_name."
