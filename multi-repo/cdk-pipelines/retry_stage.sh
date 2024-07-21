@@ -32,7 +32,11 @@ retry_stage() {
     # Retry the deploy stage with failed actions
     echo "Retrying stage $stage_name..."
 
-    aws codepipeline retry-stage-execution --pipeline-name $pipeline_name  --pipeline-execution-id $pipeline_execution_id   --stage-name $stage_name   
+    aws codepipeline retry-stage-execution --pipeline-name "$pipeline_name"  \
+              --pipeline-execution-id $pipeline_execution_id  \
+              --stage-name $stage_name   \
+              --retry-mode FAILED_ACTIONS
+
 
     echo "Retry initiated for stage $stage_name."
 }
