@@ -10,6 +10,15 @@ Creating a basic CI/CD pipeline for a list of repositories in AWS CodeCommit usi
 
 Building The Project
 ================
+
+  
+# create cloud 9 via cloudshell
+```
+aws cloud9 create-environment-ec2 \
+    --name my-demo-env \
+    --description "My demonstration development environment." \
+    --instance-type t3.small --image-id amazonlinux-2023-x86_64
+```
   
 # step 1 - quickstart
 
