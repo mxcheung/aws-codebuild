@@ -8,7 +8,12 @@ export class CdkReposStack extends cdk.Stack {
     super(scope, id, props);
 
     // Define a list of repository names
-    const repoNames = ['api_gateway_repo', 'dynamodb_repo', 'lambda_repo'];
+    const repoNames = [
+      'api_gateway_repo', 
+      'dynamodb_repo', 
+      'lambda_repo',
+      'chaos_monkey_repo'
+    ];
 
     // Create a repository for each name in the list
     repoNames.forEach(repoName => {
