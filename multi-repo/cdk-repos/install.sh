@@ -62,7 +62,7 @@ git commit -m "initial commit"
 git push origin master
 
 
-echo "git commit api-gateway-cdk to api_gateway_repo"
+echo "git commit aws-chaos-monkey to chaos_monkey_repo"
 cp -Rf /home/ec2-user/environment/aws-chaos-monkey/bin  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
 cp -Rf /home/ec2-user/environment/aws-chaos-monkey/lambda  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
 cp -Rf /home/ec2-user/environment/aws-chaos-monkey/lib  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
