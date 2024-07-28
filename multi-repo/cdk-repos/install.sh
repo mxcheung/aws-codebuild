@@ -62,11 +62,11 @@ git push origin master
 
 
 echo "git commit aws-chaos-monkey to chaos_monkey_repo"
-cp -Rf /home/ec2-user/environment/aws-chaos-monkey/bin  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
-cp -Rf /home/ec2-user/environment/aws-chaos-monkey/lambda  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
-cp -Rf /home/ec2-user/environment/aws-chaos-monkey/lib  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
-cp -Rf /home/ec2-user/environment/aws-chaos-monkey/test  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
-cp -Rf /home/ec2-user/environment/aws-chaos-monkey/*  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
+cp -Rf /home/ec2-user/environment/aws-chaos-monkey/dynamodb/bin  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
+cp -Rf /home/ec2-user/environment/aws-chaos-monkey/dynamodb/lambda  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
+cp -Rf /home/ec2-user/environment/aws-chaos-monkey/dynamodb/lib  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
+cp -Rf /home/ec2-user/environment/aws-chaos-monkey/dynamodb/test  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
+cp -Rf /home/ec2-user/environment/aws-chaos-monkey/dynamodb/*  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
 cd /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
 git add .
 git commit -m "initial commit"
