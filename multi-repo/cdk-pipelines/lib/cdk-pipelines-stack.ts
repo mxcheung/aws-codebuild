@@ -188,7 +188,7 @@ export class CdkPipelinesStack extends cdk.Stack {
     // Create pipelines for 'api_gateway_repo', 'dynamodb_repo', 'lambda_repo'
     createPipeline('api_gateway_repo', 'master');
     createPipeline('dynamodb_repo', 'master');
-    createPipeline('lambda_repo', 'master');    
-    
+    createPipeline('lambda_repo', 'master');
+    createPipeline('chaos_monkey_repo', 'master');    
   }
 }
