@@ -62,3 +62,13 @@ git commit -m "initial commit"
 git push origin master
 
 
+echo "git commit api-gateway-cdk to api_gateway_repo"
+cp -Rf /home/ec2-user/environment/aws-chaos-monkey/bin  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
+cp -Rf /home/ec2-user/environment/aws-chaos-monkey/lambda  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
+cp -Rf /home/ec2-user/environment/aws-chaos-monkey/lib  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
+cp -Rf /home/ec2-user/environment/aws-chaos-monkey/test  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
+cp -Rf /home/ec2-user/environment/aws-chaos-monkey/*  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
+git add .
+git commit -m "initial commit"
+git push origin master
