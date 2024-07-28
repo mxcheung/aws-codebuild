@@ -25,8 +25,7 @@ cd /home/ec2-user/environment/aws-codebuild/multi-repo/
 git clone codecommit::us-east-1://api_gateway_repo
 git clone codecommit::us-east-1://dynamodb_repo
 git clone codecommit::us-east-1://lambda_repo
-
-echo "git commit code to repos"
+git clone codecommit::us-east-1://chaos_monkey_repo
 
 echo "git commit dynamodb-cdk to dynamodb_repo"
 cp -Rf /home/ec2-user/environment/aws-codebuild/multi-repo/dynamodb-cdk/bin  /home/ec2-user/environment/aws-codebuild/multi-repo/dynamodb_repo
