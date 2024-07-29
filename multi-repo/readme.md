@@ -18,6 +18,7 @@ aws cloud9 create-environment-ec2 \
     --name my-demo-env \
     --description "My demonstration development environment." \
     --instance-type t3.small --image-id amazonlinux-2023-x86_64
+
 ```
   
 # step 1 - quickstart
