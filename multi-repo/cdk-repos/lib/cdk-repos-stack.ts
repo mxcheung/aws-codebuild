@@ -12,6 +12,7 @@ export class CdkReposStack extends cdk.Stack {
       'api_gateway_repo', 
       'dynamodb_repo', 
       'lambda_repo',
+      's3_repo',
       'chaos_monkey_repo'
     ];
 
