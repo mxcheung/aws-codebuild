@@ -24,6 +24,7 @@ aws cloud9 create-environment-ec2 \
 # step 1 - quickstart
 
 ```
+git clone https://github.com/mxcheung/mxcheung.github.io.git
 git clone https://github.com/mxcheung/aws-s3.git
 git clone https://github.com/mxcheung/aws-chaos-monkey.git
 git clone https://github.com/mxcheung/aws-codebuild.git
