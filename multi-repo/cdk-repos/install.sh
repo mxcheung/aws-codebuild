@@ -65,8 +65,8 @@ echo "git commit aws-s3 to s3_repo"
 cp -Rf /home/ec2-user/environment/aws-s3/s3-cdk/bin  /home/ec2-user/environment/aws-codebuild/multi-repo/s3_repo
 cp -Rf /home/ec2-user/environment/aws-s3/s3-cdk/lib  /home/ec2-user/environment/aws-codebuild/multi-repo/s3_repo
 cp -Rf /home/ec2-user/environment/aws-s3/s3-cdk/data-folder  /home/ec2-user/environment/aws-codebuild/multi-repo/s3_repo
-cp -Rf /home/ec2-user/environment/aws-s3/s3-cdk/*  /home/ec2-u ser/environment/aws-codebuild/multi-repo/s3_repo
-cp /home/ec2-user/environment/mxcheung.github.io/cookie.jpg /home/ec2-u ser/environment/aws-codebuild/multi-repo/s3_repo/data-folder
+cp -Rf /home/ec2-user/environment/aws-s3/s3-cdk/*  /home/ec2-user/environment/aws-codebuild/multi-repo/s3_repo
+cp /home/ec2-user/environment/mxcheung.github.io/cookie.jpg /home/ec2-user/environment/aws-codebuild/multi-repo/s3_repo/data-folder
 cd /home/ec2-user/environment/aws-codebuild/multi-repo/s3_repo
 git add .
 git commit -m "initial commit"
