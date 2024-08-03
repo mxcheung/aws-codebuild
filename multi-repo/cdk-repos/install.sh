@@ -60,6 +60,14 @@ git add .
 git commit -m "initial commit"
 git push origin master
 
+echo "git commit aws-s3 to s3_repo"
+cp -Rf /home/ec2-user/environment/aws-s3/s3-cdk/bin  /home/ec2-user/environment/aws-codebuild/multi-repo/s3_repo
+cp -Rf /home/ec2-user/environment/aws-s3/s3-cdk/lib  /home/ec2-user/environment/aws-codebuild/multi-repo/s3_repo
+cp -Rf /home/ec2-user/environment/aws-s3/s3-cdk/*  /home/ec2-user/environment/aws-codebuild/multi-repo/s3_repo
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/s3_repo
+git add .
+git commit -m "initial commit"
+git push origin master
 
 echo "git commit aws-chaos-monkey to chaos_monkey_repo"
 cp -Rf /home/ec2-user/environment/aws-chaos-monkey/dynamodb/bin  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
