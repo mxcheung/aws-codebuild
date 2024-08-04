@@ -53,6 +53,11 @@ aws dynamodb batch-write-item --request-items file://items.json
 # step 3 - make s3 bucket public
 
 ```
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/s3_repo
+. ./make-bucket-public.sh 
+```
+
+```
 {
   "Version": "2012-10-17",
   "Statement": [
