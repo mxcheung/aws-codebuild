@@ -8,7 +8,7 @@ for api_id in $api_ids; do
     tags=$(aws apigateway get-tags --resource-arn arn:aws:apigateway:us-east-1::/restapis/$api_id)
 
     # Check if the tags contain "department: marketing"
-    if echo $tags | grep -q '"Project": "MyProject"'; then
+    if echo $tags | grep -q '"Project": "Cookies"'; then
         echo "API Gateway ID with department marketing: $api_id"
     fi
 done
