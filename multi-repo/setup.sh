@@ -1,7 +1,8 @@
+cd /home/ec2-user/environment/
 git clone https://github.com/mxcheung/mxcheung.github.io.git
 git clone https://github.com/mxcheung/aws-s3.git
 git clone https://github.com/mxcheung/aws-chaos-monkey.git
-git clone https://github.com/mxcheung/aws-codebuild.git
+# git clone https://github.com/mxcheung/aws-codebuild.git
 cd /home/ec2-user/environment/aws-codebuild/multi-repo/cdk-repos
 . ./install.sh
 cd /home/ec2-user/environment/aws-codebuild/multi-repo/cdk-pipelines
