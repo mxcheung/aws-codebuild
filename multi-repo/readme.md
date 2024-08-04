@@ -74,6 +74,9 @@ aws s3api put-bucket-policy --bucket s3cdkstack-mys3bucket4646df6f-yyjkfr3jrftk 
 
 aws s3api put-public-access-block --bucket s3cdkstack-mys3bucket4646df6f-yyjkfr3jrftk --public-access-block-configuration \
   "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false"
+
+aws s3 cp /home/ec2-user/environment/aws-codebuild/multi-repo/s3_repo/data-folder/index.html s3://s3cdkstack-mys3bucket4646df6f-yyjkfr3jrftk/
+
 ```
 
 # step 4 - view cookies page via github pages
