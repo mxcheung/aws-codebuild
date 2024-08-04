@@ -37,6 +37,9 @@ cd /home/ec2-user/environment/aws-codebuild/multi-repo/cdk-pipelines
 . ./retry_stage.sh api_gateway_repo-Pipeline  Deploy
 cd /home/ec2-user/environment/aws-codebuild/multi-repo/dynamodb_repo
 aws dynamodb batch-write-item --request-items file://items.json
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/s3_repo
+. ./replace-api-id.sh  
+. ./make-bucket-public.sh
 
 ```
 
