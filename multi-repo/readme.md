@@ -50,10 +50,11 @@ aws dynamodb batch-write-item --request-items file://items.json
 
 ```
 
-# step 3 - make s3 bucket public
+# step 3 - replace api gateway id and make s3 bucket public
 
 ```
 cd /home/ec2-user/environment/aws-codebuild/multi-repo/s3_repo
+. ./replace-api-id.sh  
 . ./make-bucket-public.sh 
 ```
 
