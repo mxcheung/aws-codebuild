@@ -20,8 +20,13 @@ aws cloud9 create-environment-ec2 \
     --instance-type t3.small --image-id amazonlinux-2023-x86_64
 
 ```
-  
 # step 1 - quickstart
+```
+git clone https://github.com/mxcheung/mxcheung.github.io.git
+. ./setup.sh
+
+```  
+# step 1A - quickstart
 
 ```
 git clone https://github.com/mxcheung/mxcheung.github.io.git
