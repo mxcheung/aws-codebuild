@@ -87,6 +87,6 @@ export class ApiGatewayCdkStack extends cdk.Stack {
     
     // Add tags to the API Gateway
     cdk.Tags.of(api).add('Environment', 'Production');
-    cdk.Tags.of(api).add('Project', 'MyProject');
+    cdk.Tags.of(api).add('Project', 'Cookies');
   }
 }
