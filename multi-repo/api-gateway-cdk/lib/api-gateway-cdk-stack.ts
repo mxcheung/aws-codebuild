@@ -3,6 +3,7 @@ import { Construct } from 'constructs';
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
+import { Tags } from '@aws-cdk/core';
 
 export class ApiGatewayCdkStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -28,6 +29,7 @@ export class ApiGatewayCdkStack extends cdk.Stack {
       restApiName: 'Fortune Service',
       description: 'This service serves fortunes.',
     });
+    
 
     // Integrate the Lambda function with the API Gateway
     const getFortuneIntegration = new apigateway.LambdaIntegration(existingFortuneLambda, {
@@ -83,6 +85,8 @@ export class ApiGatewayCdkStack extends cdk.Stack {
       ],
     });
     
-    
+    // Add tags to the API Gateway
+    cdk.Tags.of(api).add('Environment', 'Production');
+    cdk.Tags.of(api).add('Project', 'MyProject');
   }
 }
