@@ -22,7 +22,8 @@ aws cloud9 create-environment-ec2 \
 ```
 # step 1 - quickstart
 ```
-git clone https://github.com/mxcheung/mxcheung.github.io.git
+git clone https://github.com/mxcheung/aws-codebuild.git
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/cdk-repos
 . ./setup.sh
 
 ```  
