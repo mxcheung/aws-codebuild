@@ -13,7 +13,7 @@ DURATION=5
 # Loop for the specified duration
 for (( i=1; i<=DURATION; i++ ))
 do
-  echo "Minute $i: Status message"
+  echo "Minute $i: Wait for api Status message"
   sleep 60
 done
 
