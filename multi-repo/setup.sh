@@ -7,7 +7,16 @@ cd /home/ec2-user/environment/aws-codebuild/multi-repo/cdk-repos
 . ./install.sh
 cd /home/ec2-user/environment/aws-codebuild/multi-repo/cdk-pipelines
 . ./install.sh
-sleep 5m
+
+# Number of minutes to loop
+DURATION=5
+# Loop for the specified duration
+for (( i=1; i<=DURATION; i++ ))
+do
+  echo "Minute $i: Status message"
+  sleep 60
+done
+
 cd /home/ec2-user/environment/aws-codebuild/multi-repo/cdk-pipelines
 . ./retry_stage.sh api_gateway_repo-Pipeline  Deploy
 cd /home/ec2-user/environment/aws-codebuild/multi-repo/dynamodb_repo
