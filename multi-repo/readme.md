@@ -27,6 +27,7 @@ cd /home/ec2-user/environment/aws-codebuild/multi-repo
 . ./setup.sh
 cd /home/ec2-user/environment/aws-codebuild/multi-repo/s3_repo
 . ./make-bucket-public.sh
+. ./cloud-front.sh
 ```  
 # step 1A - quickstart
 
