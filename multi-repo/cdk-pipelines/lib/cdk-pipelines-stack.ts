@@ -7,6 +7,7 @@ import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as codecommit from 'aws-cdk-lib/aws-codecommit';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as kms from '@aws-cdk/aws-kms';
+import * as ec2 from 'aws-cdk-lib/aws-ec2';
 
 export class CdkPipelinesStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -76,6 +77,12 @@ export class CdkPipelinesStack extends cdk.Stack {
       }));
       
       
+      // Replace with your VPC's CIDR block
+      const vpc = ec2.Vpc.fromLookup(this, 'ExistingVPC', {
+        isDefault: true,  // Set to true if you want the default VPC
+      });
+  
+  
       const buildProject = new codebuild.PipelineProject(this, `${repoName}-BuildProject`, {
         buildSpec: codebuild.BuildSpec.fromObject({
           version: '0.2',
@@ -103,6 +110,7 @@ export class CdkPipelinesStack extends cdk.Stack {
         environment: {
           buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
         },
+        vpc
       });
 
       const buildAction = new codepipeline_actions.CodeBuildAction({
