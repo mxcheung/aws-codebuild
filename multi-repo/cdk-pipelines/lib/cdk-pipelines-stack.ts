@@ -109,8 +109,7 @@ export class CdkPipelinesStack extends cdk.Stack {
         role: codeBuildRole,
         environment: {
           buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
-        },
-        vpc
+        }
       });
 
       const buildAction = new codepipeline_actions.CodeBuildAction({
