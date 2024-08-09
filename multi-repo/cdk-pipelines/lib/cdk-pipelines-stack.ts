@@ -78,9 +78,9 @@ export class CdkPipelinesStack extends cdk.Stack {
       
       
       // Replace with your VPC's CIDR block
-      const vpc = ec2.Vpc.fromLookup(this, 'ExistingVPC', {
-        isDefault: true,  // Set to true if you want the default VPC
-      });
+//      const vpc = ec2.Vpc.fromLookup(this, 'ExistingVPC', {
+//        isDefault: true,  // Set to true if you want the default VPC
+ //     });
   
   
       const buildProject = new codebuild.PipelineProject(this, `${repoName}-BuildProject`, {
