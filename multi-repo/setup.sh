@@ -6,6 +6,7 @@ git clone https://github.com/mxcheung/aws-chaos-monkey.git
 cd /home/ec2-user/environment/aws-codebuild/multi-repo/cdk-repos
 . ./install.sh
 cd /home/ec2-user/environment/aws-codebuild/multi-repo/cdk-pipelines
+. ./env_setup.sh
 . ./install.sh
 
 # Number of minutes to loop
