@@ -73,6 +73,15 @@ git add .
 git commit -m "initial commit"
 git push origin master
 
+echo "git commit aws-cloudwatch to cloud_watch_repo"
+cp -Rf /home/ec2-user/environment/aws-cloudwatch/my-cloudwatch-dashboard/bin  /home/ec2-user/environment/aws-codebuild/multi-repo/cloud_watch_repo
+cp -Rf /home/ec2-user/environment/aws-cloudwatch/my-cloudwatch-dashboard/lib  /home/ec2-user/environment/aws-codebuild/multi-repo/cloud_watch_repo
+cp -Rf /home/ec2-user/environment/aws-cloudwatch/my-cloudwatch-dashboard/*  /home/ec2-user/environment/aws-codebuild/multi-repo/cloud_watch_repo
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/cloud_watch_repo
+git add .
+git commit -m "initial commit"
+git push origin master
+
 echo "git commit aws-chaos-monkey to chaos_monkey_repo"
 cp -Rf /home/ec2-user/environment/aws-chaos-monkey/dynamodb/bin  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
 cp -Rf /home/ec2-user/environment/aws-chaos-monkey/dynamodb/lambda  /home/ec2-user/environment/aws-codebuild/multi-repo/chaos_monkey_repo
