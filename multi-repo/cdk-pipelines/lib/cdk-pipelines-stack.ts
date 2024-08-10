@@ -134,7 +134,7 @@ export class CdkPipelinesStack extends cdk.Stack {
                 'npm install -g aws-cdk',
                 'npm install',
                 'echo Pre-build step',
-                'sh pre_build.sh'
+                'if [ -e pre_build.sh ]; then sh pre_build.sh; fi', // Conditionally run pre_build.sh'
               ],
             },
             build: {
