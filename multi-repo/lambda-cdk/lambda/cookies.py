@@ -28,6 +28,7 @@ def get_fortune_id():
 def get_fortune():
     dynamodb = boto3.resource("dynamodb")
     fortid = get_fortune_id()
+    logger.info(f'fortid: {fortid}')
     dynamodb = boto3.resource("dynamodb")
     table = dynamodb.Table('fortunes')
     response = table.get_item(
