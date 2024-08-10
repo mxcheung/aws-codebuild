@@ -54,6 +54,7 @@ export class CdkPipelinesStack extends cdk.Stack {
       codeBuildRole.addToPolicy(new iam.PolicyStatement({
         actions: [
           'cloudformation:*',
+          'cloudwatch:*',
           's3:*',
           'sts:AssumeRole',
           'iam:PassRole',
