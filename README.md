@@ -9,11 +9,30 @@ Creating a basic CI/CD pipeline for a list of repositories in AWS CodeCommit usi
 - create repos via codecommit
 - cdk pipeline to create code pipelines per repo
 
-
 Building The Project
 ================
+
   
+# create cloud 9 via cloudshell
+```
+aws cloud9 create-environment-ec2 \
+    --name my-demo-env \
+    --description "My demonstration development environment." \
+    --instance-type t3.small --image-id amazonlinux-2023-x86_64
+
+```
+
 # step 1 - quickstart
+```
+git clone https://github.com/mxcheung/aws-codebuild.git
+cd /home/ec2-user/environment/aws-codebuild/multi-repo
+. ./setup.sh
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/s3_repo
+. ./make-bucket-public.sh
+. ./cloud-front.sh
+```  
+  
+# step 1A - quickstart
 
 ```
 git clone https://github.com/mxcheung/aws-codebuild.git
