@@ -26,6 +26,7 @@ git clone codecommit::us-east-1://api_gateway_repo
 git clone codecommit::us-east-1://dynamodb_repo
 git clone codecommit::us-east-1://lambda_repo
 git clone codecommit::us-east-1://s3_repo
+git clone codecommit::us-east-1://cloud_watch_repo
 git clone codecommit::us-east-1://chaos_monkey_repo
 
 echo "git commit dynamodb-cdk to dynamodb_repo"
