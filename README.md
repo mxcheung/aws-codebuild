@@ -27,9 +27,6 @@ aws cloud9 create-environment-ec2 \
 git clone https://github.com/mxcheung/aws-codebuild.git
 cd /home/ec2-user/environment/aws-codebuild/multi-repo
 . ./setup.sh
-cd /home/ec2-user/environment/aws-codebuild/multi-repo/s3_repo
-. ./make-bucket-public.sh
-. ./cloud-front.sh
 
 ```  
   
