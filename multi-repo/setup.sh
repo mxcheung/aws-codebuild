@@ -37,3 +37,5 @@ done
 cd /home/ec2-user/environment/aws-codebuild/multi-repo/s3_repo
 . ./replace-api-id.sh  
 . ./make-bucket-public.sh
+. ./make-bucket-public.sh
+. ./cloud-front.sh
