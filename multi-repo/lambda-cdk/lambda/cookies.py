@@ -22,10 +22,14 @@ logger.setLevel(logging.INFO)
 
 @xray_recorder.capture('get_fortune_id')
 def get_fortune_id():
-     print("get_fortune_id")
-     fortid = (random.randint(1,16))
-     return fortid
-
+    start_time = time.time()
+    print("get_fortune_id")
+    fortid = (random.randint(1,16))
+    end_time = time.time()
+    execution_time = end_time - start_time
+    publish_metric('get_fortune_id_execution_time', execution_time, 'Seconds')
+    return fortid
+    
 @xray_recorder.capture('get_fortune')
 def get_fortune():
     start_time = time.time()
