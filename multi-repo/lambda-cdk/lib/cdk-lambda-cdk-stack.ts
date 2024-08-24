@@ -42,6 +42,16 @@ export class CdkLambdaCdkStack extends cdk.Stack {
     // Grant the Lambda function read/write permissions to the DynamoDB table
     table.grantReadWriteData(lambdaFunction);
     
+    // Check if the Lambda function role exists
+    if (lambdaFunction.role) {
+      // Attach the managed policy to the Lambda function's role
+      lambdaFunction.role.addManagedPolicy(
+        iam.ManagedPolicy.fromAwsManagedPolicyName('CloudWatchFullAccess')
+      );
+    } else {
+      throw new Error('Lambda function role is undefined');
+    }
+    
     
   }
 }
