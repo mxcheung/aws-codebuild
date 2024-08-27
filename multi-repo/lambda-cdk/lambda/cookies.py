@@ -27,8 +27,12 @@ def get_fortune_id():
     fortid = (random.randint(1,16))
     end_time = time.time()
     execution_time = end_time - start_time
-    publish_metric('NACK', 1, 'Count')
-    publish_metric('NACK', 1, 'Count')
+    message_type = 'MT210' 
+    country_code = 'US'
+    region = 'CA',
+    status = 'NACK'
+    publish_metric('NACK', fortid, 'Count',  message_type, country_code, region, status)
+    publish_metric('NACK', fortid, 'Count',  message_type, country_code, region, status)
     return fortid
     
 @xray_recorder.capture('get_fortune')
@@ -51,7 +55,11 @@ def get_fortune():
     end_time = time.time()
     execution_time = end_time - start_time
 #    logger.info(f'get_fortune_execution_time: {execution_time}')
-    publish_metric('ACK', 1, 'Count')
+    message_type = 'MT210' 
+    country_code = 'US'
+    region = 'WA',
+    status = 'ACK'
+    publish_metric('ACK', fortid, 'Count',  message_type, country_code, region, status)
     return fort_string
 
 
@@ -76,7 +84,7 @@ def lambda_handler(event, context):
     return resp
     
 
-def publish_metric(name, value, unit='Count'):
+def publish_metric(name, value, unit='Count', message_type, country_code, region, status):
     response = cloudwatch.put_metric_data(
         Namespace='MessageProcessing',  # Replace with a meaningful namespace
         MetricData=[
@@ -84,9 +92,21 @@ def publish_metric(name, value, unit='Count'):
                 'MetricName': name,
                 'Dimensions': [
                     {
-                        'Name': 'MessageStatus',
-                        'Value': name
+                        Name: 'MessageType',
+                        Value: message_type
                     },
+                    {
+                        Name: 'CountryCode',
+                        Value: country_code
+                    },
+                    {
+                        Name: 'Region',
+                        Value: region
+                    },
+                    {
+                        'Name': 'Status',
+                        'Value': status
+                    }                    
                 ],
                 'Value': value,
                 'Unit': unit
