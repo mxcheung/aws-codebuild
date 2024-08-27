@@ -59,7 +59,10 @@ def get_fortune():
     country_code = 'US'
     region = 'us-east-1',
     status = 'ACK'
-    publish_metric('ACK', fortid, 'Count',  message_type, country_code, region, status)
+    publish_metric('ACK', fortid, 'Count',  'MT210' , country_code, region, status)
+    publish_metric('ACK', fortid, 'Count',  'MT103' , country_code, region, status)
+    publish_metric('ACK', fortid, 'Count',  'MT103' , country_code, region, status)
+    publish_metric('ACK', fortid, 'Count',  'MT100' , country_code, region, status)
     return fort_string
 
 
