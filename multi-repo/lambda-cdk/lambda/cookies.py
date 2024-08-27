@@ -50,7 +50,7 @@ def get_fortune():
     end_time = time.time()
     execution_time = end_time - start_time
 #    logger.info(f'get_fortune_execution_time: {execution_time}')
-    publish_metric('get_fortune_execution_time', 1, 'Count')
+    publish_metric('ACK', 1, 'Count')
     return fort_string
 
 
@@ -77,7 +77,7 @@ def lambda_handler(event, context):
 
 def publish_metric(name, value, unit='Count'):
     response = cloudwatch.put_metric_data(
-        Namespace='YourNamespace',  # Replace with a meaningful namespace
+        Namespace='MessageProcessing',  # Replace with a meaningful namespace
         MetricData=[
             {
                 'MetricName': name,
