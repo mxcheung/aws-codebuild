@@ -28,7 +28,7 @@ def get_fortune_id():
     end_time = time.time()
     execution_time = end_time - start_time
     message_type = 'MT210' 
-    country_code = 'US'
+    country_code = 'AU'
     region = 'ap-southeast-2',
     status = 'NACK'
     publish_metric('NACK', fortid, 'Count',  message_type, country_code, region, status)
