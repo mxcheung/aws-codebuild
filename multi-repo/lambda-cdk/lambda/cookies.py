@@ -29,7 +29,7 @@ def get_fortune_id():
     execution_time = end_time - start_time
     message_type = 'MT210' 
     country_code = 'US'
-    region = 'CA',
+    region = 'ap-southeast-2',
     status = 'NACK'
     publish_metric('NACK', fortid, 'Count',  message_type, country_code, region, status)
     publish_metric('NACK', fortid, 'Count',  message_type, country_code, region, status)
@@ -57,7 +57,7 @@ def get_fortune():
 #    logger.info(f'get_fortune_execution_time: {execution_time}')
     message_type = 'MT210' 
     country_code = 'US'
-    region = 'WA',
+    region = 'us-east-1',
     status = 'ACK'
     publish_metric('ACK', fortid, 'Count',  message_type, country_code, region, status)
     return fort_string
