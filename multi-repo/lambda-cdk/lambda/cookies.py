@@ -83,8 +83,8 @@ def publish_metric(name, value, unit='Count'):
                 'MetricName': name,
                 'Dimensions': [
                     {
-                        'Name': 'FunctionName',
-                        'Value': 'LambdaCookies'  # Replace with your Lambda function name
+                        'Name': 'MessageStatus',
+                        'Value': name
                     },
                 ],
                 'Value': value,
