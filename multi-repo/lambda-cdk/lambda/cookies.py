@@ -27,7 +27,7 @@ def get_fortune_id():
     fortid = (random.randint(1,16))
     end_time = time.time()
     execution_time = end_time - start_time
-    publish_metric('get_fortune_id_execution_time', execution_time, 'Seconds')
+    publish_metric('get_fortune_id_execution_time', 1, 'Count')
     return fortid
     
 @xray_recorder.capture('get_fortune')
@@ -50,7 +50,7 @@ def get_fortune():
     end_time = time.time()
     execution_time = end_time - start_time
 #    logger.info(f'get_fortune_execution_time: {execution_time}')
-    publish_metric('get_fortune_execution_time', execution_time, 'Seconds')
+    publish_metric('get_fortune_execution_time', 1, 'Count')
     return fort_string
 
 
