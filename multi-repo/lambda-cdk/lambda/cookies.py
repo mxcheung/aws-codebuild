@@ -29,10 +29,10 @@ def get_fortune_id():
     execution_time = end_time - start_time
     message_type = 'MT210' 
     country_code = 'AU'
-    region = 'ap-southeast-2',
+    region = 'ap-southeast-2'
     status = 'NACK'
-    publish_metric('NACK', fortid, 'Count',  message_type, country_code, region, status)
-    publish_metric('NACK', fortid, 'Count',  message_type, country_code, region, status)
+    publish_metric('NACK', fortid, message_type, country_code, region, status, unit='Count')
+    publish_metric('NACK', fortid, message_type, country_code, region, status, unit='Count')
     return fortid
     
 @xray_recorder.capture('get_fortune')
@@ -57,12 +57,12 @@ def get_fortune():
 #    logger.info(f'get_fortune_execution_time: {execution_time}')
     message_type = 'MT210' 
     country_code = 'US'
-    region = 'us-east-1',
+    region = 'us-east-1'
     status = 'ACK'
-    publish_metric('ACK', fortid, 'Count',  'MT210' , country_code, region, status)
-    publish_metric('ACK', fortid, 'Count',  'MT103' , country_code, region, status)
-    publish_metric('ACK', fortid, 'Count',  'MT103' , country_code, region, status)
-    publish_metric('ACK', fortid, 'Count',  'MT100' , country_code, region, status)
+    publish_metric('ACK', fortid, 'MT210' , country_code, region, status, unit='Count')
+    publish_metric('ACK', fortid, 'MT103' , country_code, region, status, unit='Count')
+    publish_metric('ACK', fortid, 'MT103' , country_code, region, status, unit='Count')
+    publish_metric('ACK', fortid, 'MT100' , country_code, region, status, unit='Count')
     return fort_string
 
 
@@ -87,7 +87,7 @@ def lambda_handler(event, context):
     return resp
     
 
-def publish_metric(name, value, unit='Count', message_type, country_code, region, status):
+def publish_metric(name, value, message_type, country_code, region, status, unit='Count'):
     response = cloudwatch.put_metric_data(
         Namespace='MessageProcessing',  # Replace with a meaningful namespace
         MetricData=[
@@ -95,16 +95,16 @@ def publish_metric(name, value, unit='Count', message_type, country_code, region
                 'MetricName': name,
                 'Dimensions': [
                     {
-                        Name: 'MessageType',
-                        Value: message_type
+                        'Name': 'MessageType',
+                        'Value': message_type
                     },
                     {
-                        Name: 'CountryCode',
-                        Value: country_code
+                        'Name': 'CountryCode',
+                        'Value': country_code
                     },
                     {
-                        Name: 'Region',
-                        Value: region
+                        'Name': 'Region',
+                        'Value': region
                     },
                     {
                         'Name': 'Status',
