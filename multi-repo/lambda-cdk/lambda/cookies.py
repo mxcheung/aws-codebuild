@@ -97,19 +97,7 @@ def publish_metric(name, value, message_type, country_code, region, status, unit
                     {
                         'Name': 'MessageType',
                         'Value': message_type
-                    },
-                    {
-                        'Name': 'CountryCode',
-                        'Value': country_code
-                    },
-                    {
-                        'Name': 'Region',
-                        'Value': region
-                    },
-                    {
-                        'Name': 'Status',
-                        'Value': status
-                    }                    
+                    }                
                 ],
                 'Value': value,
                 'Unit': unit
