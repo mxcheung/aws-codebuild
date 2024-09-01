@@ -55,6 +55,7 @@ export class CdkPipelinesStack extends cdk.Stack {
         actions: [
           'cloudformation:*',
           'cloudwatch:*',
+          'logs:*', 
           's3:*',
           'sts:AssumeRole',
           'iam:PassRole',
