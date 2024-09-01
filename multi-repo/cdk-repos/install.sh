@@ -26,7 +26,8 @@ git clone codecommit::us-east-1://api_gateway_repo
 git clone codecommit::us-east-1://dynamodb_repo
 git clone codecommit::us-east-1://lambda_repo
 git clone codecommit::us-east-1://s3_repo
-git clone codecommit::us-east-1://cloud_watch_repo
+git clone codecommit::us-east-1://cloud_watch_metrics_repo
+git clone codecommit::us-east-1://cloud_watch_dashboard_repo
 git clone codecommit::us-east-1://chaos_monkey_repo
 
 echo "git commit dynamodb-cdk to dynamodb_repo"
@@ -73,11 +74,20 @@ git add .
 git commit -m "initial commit"
 git push origin master
 
-echo "git commit aws-cloudwatch to cloud_watch_repo"
-cp -Rf /home/ec2-user/environment/aws-cloudwatch/my-cloudwatch-dashboard/bin  /home/ec2-user/environment/aws-codebuild/multi-repo/cloud_watch_repo
-cp -Rf /home/ec2-user/environment/aws-cloudwatch/my-cloudwatch-dashboard/lib  /home/ec2-user/environment/aws-codebuild/multi-repo/cloud_watch_repo
-cp -Rf /home/ec2-user/environment/aws-cloudwatch/my-cloudwatch-dashboard/*  /home/ec2-user/environment/aws-codebuild/multi-repo/cloud_watch_repo
-cd /home/ec2-user/environment/aws-codebuild/multi-repo/cloud_watch_repo
+echo "git commit aws-cloudwatch to cloud_watch_metrics_repo"
+cp -Rf /home/ec2-user/environment/aws-cloudwatch/my-cloudwatch-metrics/bin  /home/ec2-user/environment/aws-codebuild/multi-repo/cloud_watch_metrics_repo
+cp -Rf /home/ec2-user/environment/aws-cloudwatch/my-cloudwatch-metrics/lib  /home/ec2-user/environment/aws-codebuild/multi-repo/cloud_watch_metrics_repo
+cp -Rf /home/ec2-user/environment/aws-cloudwatch/my-cloudwatch-metrics/*  /home/ec2-user/environment/aws-codebuild/multi-repo/cloud_watch_metrics_repo
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/cloud_watch_metrics_repo
+git add .
+git commit -m "initial commit"
+git push origin master
+
+echo "git commit aws-cloudwatch to cloud_watch_dashboard_repo"
+cp -Rf /home/ec2-user/environment/aws-cloudwatch/my-cloudwatch-dashboard/bin  /home/ec2-user/environment/aws-codebuild/multi-repo/cloud_watch_dashboard_repo
+cp -Rf /home/ec2-user/environment/aws-cloudwatch/my-cloudwatch-dashboard/lib  /home/ec2-user/environment/aws-codebuild/multi-repo/cloud_watch_dashboard_repo
+cp -Rf /home/ec2-user/environment/aws-cloudwatch/my-cloudwatch-dashboard/*  /home/ec2-user/environment/aws-codebuild/multi-repo/cloud_watch_dashboard_repo
+cd /home/ec2-user/environment/aws-codebuild/multi-repo/cloud_watch_dashboard_repo
 git add .
 git commit -m "initial commit"
 git push origin master
