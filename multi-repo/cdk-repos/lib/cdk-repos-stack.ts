@@ -13,7 +13,8 @@ export class CdkReposStack extends cdk.Stack {
       'dynamodb_repo', 
       'lambda_repo',
       's3_repo',
-      'cloud_watch_repo',
+      'cloud_watch_metrics_repo',
+      'cloud_watch_dashboard_repo',
       'chaos_monkey_repo'
     ];
 
